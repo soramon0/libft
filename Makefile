@@ -1,24 +1,29 @@
 LIB_NAME = libft.a
-SRCS_NAMES = ./is_alpha.c
-OBJS_NAMES = ./ft_alpha.o
-INCLUDES_DIR = libft.h
+SRC = $(shell find . -type f -name '*.c' -not -path './tests/*')
+OBJ = $(SRC:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 all: $(LIB_NAME)
 
 $(LIB_NAME):
-	cc $(CFLAGS) -c ./ft_isalpha.c -o ./ft_isalpha.o
-	ar rc $(LIB_NAME) $(OBJS_NAMES)
+	$(CC) $(CFLAGS) -c $(SRC)
+	ar rc $(LIB_NAME) $(OBJ)
 	ranlib $(LIB_NAME)
 
+start:
+	@$(CC) $(CFLAGS) $(SRC) ./tests/run.c -o run
+	@./run
+	@rm -f run 
+
 testrun:
-	@cc $(CFLAGS) ./ft_isalpha.c ./test/ft_isalpha.c -o testrunner
+	$(CC) $(CFLAGS) -c $(SRC) ./tests/ft_isalpha.c -o testrunner
+	cc $(CFLAGS) -c $(SRC)
 	@./testrunner
 	@rm -f testrunner
 
 clean:
-	rm -f $(OBJS_NAMES)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(LIB_NAME)
