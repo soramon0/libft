@@ -4,16 +4,22 @@
 void testIsAlpha();
 void testIsAscii();
 void testToUpper();
+void testToLower();
 
 int main()
 {
-	testToUpper();
+	testToLower();
 	return (0);
+}
+
+void testToLower()
+{
+	printf("%c\n", ft_tolower('D'));
 }
 
 void testToUpper()
 {
-	printf("%c\n", ft_toupper('D'));
+	printf("%c\n", ft_toupper('d'));
 }
 
 void testIsAlpha()
