@@ -3,11 +3,17 @@
 
 void testIsAlpha();
 void testIsAscii();
+void testToUpper();
 
 int main()
 {
-	testIsAlpha();
+	testToUpper();
 	return (0);
+}
+
+void testToUpper()
+{
+	printf("%c\n", ft_toupper('D'));
 }
 
 void testIsAlpha()
