@@ -5,11 +5,22 @@ void testIsAlpha();
 void testIsAscii();
 void testToUpper();
 void testToLower();
+void testStrChr();
 
 int main()
 {
-	testToLower();
+	testStrChr();
 	return (0);
+}
+
+void testStrChr()
+{
+	char *s = "karim is here!";
+	int pos = 4;
+	char *addr = &s[pos];
+	printf("char '%x' at addr %p\n", *addr, addr);
+	char *got = ft_strchr(s, *addr);
+	printf("%p - '%x'\n", got, *got);
 }
 
 void testToLower()

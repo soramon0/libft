@@ -10,5 +10,7 @@ int	ft_isprint(int c);
 int	ft_toupper(int c);
 int	ft_tolower(int c);
 int	ft_strlen(const char *s);
+char  *ft_strchr(const char *s, int c);
+
 
 #endif
