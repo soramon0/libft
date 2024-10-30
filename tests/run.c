@@ -6,11 +6,22 @@ void testIsAscii();
 void testToUpper();
 void testToLower();
 void testStrChr();
+void testStrrChr();
 
 int main()
 {
-	testStrChr();
+	testStrrChr();
 	return (0);
+}
+
+void testStrrChr()
+{
+	char *s = "karim is here!";
+	int pos = 10;
+	char *addr = &s[pos];
+	printf("char '%c' at addr %p\n", *addr, addr);
+	char *got = ft_strrchr(s, *addr);
+	printf("%p - '%c'\n", got, *got);
 }
 
 void testStrChr()
