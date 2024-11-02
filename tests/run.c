@@ -19,8 +19,8 @@ int main()
 void testStrnCmp()
 {
 	char *s1 = "ABC";
-	char *s2 = "AB";
-	unsigned int cases[] = {-1, 0, 1, 2, 3, 4, 5, 6};
+	char s2[] = {'A', 'B', 0x81};
+	int cases[] = {-1, 0, 1, 2, 3, 4, 5, 6};
 	int size = 8;
 	int i = 0;
 	while (i < size)
