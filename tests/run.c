@@ -9,11 +9,24 @@ void testToLower();
 void testStrChr();
 void testStrrChr();
 void testStrnCmp();
+void testStrnStr();
 
 int main()
 {
-	testStrnCmp();
+	testStrnStr();
 	return (0);
+}
+
+void testStrnStr()
+{
+	char haystack[] = "Foo Bar Baz";
+	char needle[] = "Bar";
+	size_t len = 5;
+	char *result = ft_strnstr(haystack, needle, len);
+	printf("haystack: '%s'\n", haystack);
+	printf("needle: '%s'\n", needle);
+	printf("len: %d\n", (int)len);
+	printf("result: '%s'\n", result);
 }
 
 void testStrnCmp()
