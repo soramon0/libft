@@ -1,5 +1,6 @@
 #include "../libft.h"
 #include "stdio.h"
+#include <string.h>
 
 void testIsAlpha();
 void testIsAscii();
@@ -7,11 +8,31 @@ void testToUpper();
 void testToLower();
 void testStrChr();
 void testStrrChr();
+void testStrnCmp();
 
 int main()
 {
-	testStrrChr();
+	testStrnCmp();
 	return (0);
+}
+
+void testStrnCmp()
+{
+	char *s1 = "ABC";
+	char *s2 = "AB";
+	unsigned int cases[] = {-1, 0, 1, 2, 3, 4, 5, 6};
+	int size = 8;
+	int i = 0;
+	while (i < size)
+	{
+		int r1 = strncmp(s1, s2, cases[i]);
+		int r2 = ft_strncmp(s1, s2, cases[i]);
+		printf("strncmp(%s, %s, %d) = %d\n", s1, s2, cases[i], r1);
+		printf("ft_strncmp(%s, %s, %d) = %d\n", s1, s2, cases[i], r2);
+		if (i != size - 1)
+			printf("--------------\n");
+		i++;
+	}
 }
 
 void testStrrChr()
@@ -55,7 +76,8 @@ void testIsAscii()
 {
 	int ch;
 
-	for (ch = -5; ch <= 128; ch++) {
+	for (ch = -5; ch <= 128; ch++)
+	{
 		printf("%d    ", ch);
 		if (ft_isascii(ch))
 			printf("The character is %c\n", ch);
