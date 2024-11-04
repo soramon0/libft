@@ -20,7 +20,7 @@ int main()
 }
 
 void testAtoi() {
-	char s[] = "-123aa";
+	char s[] = "-120aa";
 	printf("%d\n", atoi(s));
 	printf("%d\n", ft_atoi(s));
 }

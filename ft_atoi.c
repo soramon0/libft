@@ -14,20 +14,25 @@
 
 int	ft_isspace(char c)
 {
-	return (c == '\t' || c == '\f' || c == '\n' || c == '\v' || c == '\r' || c == ' ');
+	return (c == '\t' || c == '\f' || c == '\n' \
+	|| c == '\v' || c == '\r' || c == ' ');
 }
 
 int	ft_atoi(const char *nptr)
 {
-	int r;
-	int s;
+	int	r;
+	int	s;
 
 	r = 0;
 	s = 1;
 	while (ft_isspace(*nptr))
 		nptr++;
-	if (((*nptr == '-' && (s = -1) == -1) || (*nptr == '+')) && nptr++)
-		s = s;
+	if (*nptr == '+' || *nptr == '-')
+	{
+		if (*nptr == '-')
+			s = -1;
+		nptr++;
+	}
 	while (ft_isdigit(*nptr))
 		r = (r * 10) + (*nptr++ - '0');
 	return (r * s);
