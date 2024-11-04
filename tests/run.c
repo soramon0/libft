@@ -1,5 +1,6 @@
 #include "../libft.h"
 #include "stdio.h"
+#include <stdlib.h>
 #include <string.h>
 
 void testIsAlpha();
@@ -10,11 +11,18 @@ void testStrChr();
 void testStrrChr();
 void testStrnCmp();
 void testStrnStr();
+void testAtoi();
 
 int main()
 {
-	testStrnStr();
+	testAtoi();
 	return (0);
+}
+
+void testAtoi() {
+	char s[] = "-123aa";
+	printf("%d\n", atoi(s));
+	printf("%d\n", ft_atoi(s));
 }
 
 void testStrnStr()
