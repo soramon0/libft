@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaayoun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,26 +11,14 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
 
-	if (*needle == '\0')
-		return ((char *)haystack);
 	i = 0;
-	while (haystack[i] && i < len)
-	{
-		j = 0;
-		while (haystack[i + j] && needle[j] && haystack[i + j] == needle[j])
-			j++;
-		if (needle[j] == '\0')
-			return ((char *)&haystack[i]);
-		if (j > 0)
-			i += j;
-		else
-			i++;
-	}
-	return (0);
+	while (n--)
+		((unsigned char *)s)[i++] = (unsigned char)c;
+	return (s);
 }

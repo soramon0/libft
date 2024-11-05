@@ -12,11 +12,26 @@ void testStrrChr();
 void testStrnCmp();
 void testStrnStr();
 void testAtoi();
+void testMemset();
 
 int main()
 {
-	testAtoi();
+	testMemset();
 	return (0);
+}
+
+void testMemset()
+{
+	int ft_n[5];
+	int n[5];
+	int c = 0;
+
+	ft_memset(ft_n, c, sizeof(ft_n));
+	memset(n, c, sizeof(n));
+
+	for (int i = 0; i < 5; i++) {
+		printf("%d | %d\n", ft_n[i], n[i]);
+	}
 }
 
 void testAtoi() {
