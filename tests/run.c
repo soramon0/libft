@@ -2,6 +2,7 @@
 #include "stdio.h"
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 
 void testIsAlpha();
 void testIsAscii();
@@ -13,11 +14,33 @@ void testStrnCmp();
 void testStrnStr();
 void testAtoi();
 void testMemset();
+void testBzero();
 
 int main()
 {
-	testMemset();
+	testBzero();
 	return (0);
+}
+
+void testBzero()
+{
+	int ft_n[5];
+	int n[5];
+	int c = -1;
+
+	ft_memset(ft_n, c, sizeof(ft_n));
+	memset(n, c, sizeof(n));
+
+	for (size_t i = 0; i < 5; i++) {
+		printf("%d | %d\n", ft_n[i], n[i]);
+	}
+
+	bzero(n, sizeof(n));
+	bzero(ft_n, sizeof(ft_n));
+
+	for (size_t i = 0; i < 5; i++) {
+		printf("%d | %d\n", ft_n[i], n[i]);
+	}
 }
 
 void testMemset()
@@ -29,7 +52,7 @@ void testMemset()
 	ft_memset(ft_n, c, sizeof(ft_n));
 	memset(n, c, sizeof(n));
 
-	for (int i = 0; i < 5; i++) {
+	for (size_t i = 0; i < 5; i++) {
 		printf("%d | %d\n", ft_n[i], n[i]);
 	}
 }
