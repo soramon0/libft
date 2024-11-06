@@ -47,7 +47,7 @@ void testMemset()
 {
 	int ft_n[5];
 	int n[5];
-	int c = 0;
+	int c = 1;
 
 	ft_memset(ft_n, c, sizeof(ft_n));
 	memset(n, c, sizeof(n));
@@ -57,8 +57,9 @@ void testMemset()
 	}
 
 	int a = 0;
-	memset(&a, 57, 1);
-	memset((char*)&a + 1, 5, 1);
+	char *k = (char*) &a;
+	memset(k, 57, 1);
+	memset(k + 1, 5, 1);
 	printf("%d\n", a);
 }
 
