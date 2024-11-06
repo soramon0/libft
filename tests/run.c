@@ -18,7 +18,7 @@ void testBzero();
 
 int main()
 {
-	testBzero();
+	testMemset();
 	return (0);
 }
 
@@ -55,6 +55,11 @@ void testMemset()
 	for (size_t i = 0; i < 5; i++) {
 		printf("%d | %d\n", ft_n[i], n[i]);
 	}
+
+	int a = 0;
+	memset(&a, 57, 1);
+	memset((char*)&a + 1, 5, 1);
+	printf("%d\n", a);
 }
 
 void testAtoi() {
