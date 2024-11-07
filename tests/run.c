@@ -58,8 +58,9 @@ void testMemset()
 
 	int a = 0;
 	char *k = (char*) &a;
-	memset(k, 57, 1);
-	memset(k + 1, 5, 1);
+	memset(k, 199, 1);
+	memset(k + 1, 250, 1);
+	memset(k + 2, 255, 2);
 	printf("%d\n", a);
 }
 
