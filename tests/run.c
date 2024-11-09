@@ -15,11 +15,12 @@ void testStrnStr();
 void testAtoi();
 void testMemset();
 void testMemchr();
+void testMemcpy();
 void testBzero();
 
 int main()
 {
-	testMemchr();
+	testMemcpy();
 	return (0);
 }
 
@@ -41,6 +42,24 @@ void testBzero()
 
 	for (size_t i = 0; i < 5; i++) {
 		printf("%d | %d\n", ft_n[i], n[i]);
+	}
+}
+
+void testMemcpy()
+{
+	int src[] = {1, 2};
+	int dst1[2] = {0};
+	int dst2[2] = {0};
+	int len = sizeof(src) / sizeof(src[0]);
+
+	int *r1 = ft_memcpy(dst1, src, sizeof(src));
+	int *r2 = memcpy(dst2, src, sizeof(src));
+
+	int i = 0;
+	while (i < len){
+		printf("ft_memcpy = %d\n", r1[i]);
+		printf("memcpy = %d\n", r2[i]);
+		i++;
 	}
 }
 

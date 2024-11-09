@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaayoun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,18 +12,19 @@
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned char	*haystack;
-	unsigned char	needle;
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			i;
 
-	haystack = (unsigned char *)s;
-	needle = (unsigned char )c;
+	i = 0;
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
 	while (n--)
 	{
-		if (*haystack == needle)
-			return (haystack);
-		haystack++;
+		d[i] = s[i];
+		i++;
 	}
-	return (NULL);
+	return (dest);
 }
