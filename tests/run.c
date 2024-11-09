@@ -16,11 +16,12 @@ void testAtoi();
 void testMemset();
 void testMemchr();
 void testMemcpy();
+void testMemcmp();
 void testBzero();
 
 int main()
 {
-	testMemcpy();
+	testMemcmp();
 	return (0);
 }
 
@@ -43,6 +44,23 @@ void testBzero()
 	for (size_t i = 0; i < 5; i++) {
 		printf("%d | %d\n", ft_n[i], n[i]);
 	}
+}
+
+void testMemcmp()
+{
+	int arr1[] = {1, 2};
+	int arr2[] = {1, 1};
+	int r1 = ft_memcmp(arr1, arr2, sizeof(int) * 2);
+	int r2 = memcmp(arr1, arr2, sizeof(int) * 2);
+	printf("array ft_memcmp = %d\n", r1);
+	printf("array memcmp = %d\n", r2);
+
+	int a = -1;
+	short int b = 1;
+	r1 = ft_memcmp(&a, &b, sizeof(short int));
+	r2 = memcmp(&a, &b, sizeof(short int));
+	printf("scalar ft_memcmp = %d\n", r1);
+	printf("scalar memcmp = %d\n", r2);
 }
 
 void testMemcpy()
