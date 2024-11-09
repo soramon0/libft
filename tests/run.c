@@ -14,11 +14,12 @@ void testStrnCmp();
 void testStrnStr();
 void testAtoi();
 void testMemset();
+void testMemchr();
 void testBzero();
 
 int main()
 {
-	testMemset();
+	testMemchr();
 	return (0);
 }
 
@@ -41,6 +42,25 @@ void testBzero()
 	for (size_t i = 0; i < 5; i++) {
 		printf("%d | %d\n", ft_n[i], n[i]);
 	}
+}
+
+void testMemchr()
+{
+	int arr1[] = {1, 2};
+	int c = 1;
+
+	int *r1 = ft_memchr(arr1, c, sizeof(int));
+	int *r2 = memchr(arr1, c, sizeof(int));
+
+	if (r1) 
+		printf("ft_memchr = %d\n", *r1);
+	else
+		printf("ft_memchr = %p\n", r1);
+
+	if (r2)
+		printf("memchr = %d\n", *r2);
+	else
+		printf("memchr = %p\n", r2);
 }
 
 void testMemset()
