@@ -16,12 +16,13 @@ void testAtoi();
 void testMemset();
 void testMemchr();
 void testMemcpy();
+void testMemmove();
 void testMemcmp();
 void testBzero();
 
 int main()
 {
-	testMemcmp();
+	testMemmove();
 	return (0);
 }
 
@@ -44,6 +45,21 @@ void testBzero()
 	for (size_t i = 0; i < 5; i++) {
 		printf("%d | %d\n", ft_n[i], n[i]);
 	}
+}
+
+void testMemmove()
+{
+	char src1[] = "Hello World";
+	int dst1[11];
+	char *r1 = memmove(dst1, src1, sizeof(src1));
+	printf("src1 = %s\n", src1);
+	printf("ft_memmove = %s\n", r1);
+
+	char src2[] = "Hello World";
+	int dst2[11];
+	char *r2 = memmove(dst2, src2, sizeof(src2));
+	printf("src2 = %s\n", src2);
+	printf("memmove = %s\n", r2);
 }
 
 void testMemcmp()
