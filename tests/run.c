@@ -20,11 +20,27 @@ void testMemmove();
 void testMemcmp();
 void testBzero();
 void testStrdup();
+void testCalloc();
 
 int main()
 {
-	testStrdup();
+	testCalloc();
 	return (0);
+}
+
+typedef struct {
+	int value;
+} Calloc_test;
+
+void testCalloc()
+{
+	Calloc_test *c = ft_calloc(sizeof(Calloc_test), sizeof(Calloc_test) * 10);
+	size_t i = 0;
+	while (i < 10)
+	{
+		printf("Struct[%zu].value = %d\n", i, c->value);
+		i++;
+	}
 }
 
 void testStrdup()
