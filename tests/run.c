@@ -19,11 +19,20 @@ void testMemcpy();
 void testMemmove();
 void testMemcmp();
 void testBzero();
+void testStrdup();
 
 int main()
 {
-	testMemmove();
+	testStrdup();
 	return (0);
+}
+
+void testStrdup()
+{
+	char *src = "Hello World";
+	char *dup = ft_strdup(src);
+	printf("src = '%s'\n", src);
+	printf("dup = '%s'\n", dup);
 }
 
 void testBzero()
