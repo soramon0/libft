@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
+#include <assert.h>
 
 void testIsAlpha();
 void testIsAscii();
@@ -21,11 +22,23 @@ void testMemcmp();
 void testBzero();
 void testStrdup();
 void testCalloc();
+void testStrlcpy();
 
 int main()
 {
-	testCalloc();
+testStrlcpy();
 	return (0);
+}
+
+void testStrlcpy()
+{
+	char dst1[6];
+	const char *src1 = "Hello";
+	size_t r1 = ft_strlcpy(dst1, src1, sizeof(dst1));
+	printf("src: %s\n", src1);
+	printf("dst: %s\n", dst1);
+	printf("Expected length: %zu\n", ft_strlen(src1));
+	printf("Returned length: %zu\n", r1);
 }
 
 typedef struct {
