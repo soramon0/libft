@@ -23,11 +23,37 @@ void testBzero();
 void testStrdup();
 void testCalloc();
 void testStrlcpy();
+void testStrlcat();
 
 int main()
 {
-testStrlcpy();
+	testStrlcat();
 	return (0);
+}
+
+void testStrlcat()
+{
+	char dst1[12] = {'H', 'e', 'l', 'l', 'o'};
+	const char *src1 = " World";
+	size_t dst1len = ft_strlen(dst1);
+	size_t r1 = ft_strlcat(dst1, src1, sizeof(dst1) / 2);
+	printf("src: %s\n", src1);
+	printf("dst: %s\n", dst1);
+	printf("src length: %zu\n", ft_strlen(src1));
+	printf("dst length: %zu\n", dst1len);
+	printf("Returned length: %zu\n", r1);
+
+	printf("------------------\n");
+
+	char dst2[12] = {'H', 'e', 'l', 'l', 'o'};
+	size_t dst2len = ft_strlen(dst2);
+	const char *src2 = " World";
+	size_t r2 = strlcat(dst2, src2, sizeof(dst2) / 2);
+	printf("src: %s\n", src2);
+	printf("dst: %s\n", dst2);
+	printf("src length: %zu\n", ft_strlen(src2));
+	printf("dst length: %zu\n", dst2len);
+	printf("Returned length: %zu\n", r2);
 }
 
 void testStrlcpy()
