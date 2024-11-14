@@ -27,11 +27,25 @@ void testStrlcat();
 void testSubstr();
 void testStrjoin();
 void testStrtrim();
+void testSplit();
 
 int main()
 {
-	testStrtrim();
+	testSplit();
 	return (0);
+}
+
+void testSplit()
+{
+	char *str = " Hello   Wrold ";
+	char sep  = ' ';
+	char **r = ft_split(str, sep);
+	printf("%p\n", r);
+	while (r != NULL && *r != NULL)
+	{
+		printf("%s\n", *r);
+		r++;
+	}
 }
 
 void testStrtrim()
@@ -41,7 +55,6 @@ void testStrtrim()
 	char *ret = ft_strtrim(s1, set);
 	printf("got '%s'\n", ret);
 }
-
 
 void testStrjoin()
 {
