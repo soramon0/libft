@@ -33,11 +33,17 @@ void testItoa();
 void testStrmapi();
 void testStriteri();
 void testPutcharFd();
+void testPutstrFd();
 
 int main()
 {
-	testPutcharFd();
+	testPutstrFd();
 	return (0);
+}
+
+void testPutstrFd()
+{
+	ft_putstr_fd("Hello World\n", 1);
 }
 
 void testPutcharFd()
