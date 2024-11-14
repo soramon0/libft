@@ -35,11 +35,18 @@ void testStriteri();
 void testPutcharFd();
 void testPutstrFd();
 void testPutendlFd();
+void testPutnbrFd();
 
 int main()
 {
-	testPutendlFd();
+	testPutnbrFd();
 	return (0);
+}
+
+void	testPutnbrFd()
+{
+	ft_putnbr_fd(INT_MAX, 1);
+	ft_putchar_fd('\n', 1);
 }
 
 void testPutendlFd()
