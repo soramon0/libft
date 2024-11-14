@@ -25,18 +25,27 @@ void testCalloc();
 void testStrlcpy();
 void testStrlcat();
 void testSubstr();
+void testStrjoin();
 
 int main()
 {
-	testSubstr();
+	testStrjoin();
 	return (0);
+}
+
+void testStrjoin()
+{
+	char *s1= "Hello";
+	char *s2 = "World";
+	char *ret = ft_strjoin(s1, s2);
+	printf("got '%s'\n", ret);
 }
 
 void testSubstr()
 {
 	char *str = "Hello World";
 	char *ret = ft_substr(str, 6, 5);
-	printf("got %s\n", ret);
+	printf("got '%s'\n", ret);
 }
 
 void testStrlcat()
