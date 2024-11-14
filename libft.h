@@ -15,6 +15,7 @@
 
 # include <stddef.h>
 # include <stdlib.h>
+# include <stdint.h>
 
 int		ft_atoi(const char *nptr);
 int		ft_isalpha(int c);
