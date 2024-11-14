@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaayoun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,25 +12,41 @@
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+int	isset(const char *set, char c)
 {
-	char	*ret;
-	size_t	i;
+	while (*set)
+	{
+		if (c == *set)
+			return (1);
+		set++;
+	}
+	return (0);
+}
 
-	ret = malloc(len + 1);
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t		i;
+	const char	*s;
+	char		*ret;
+
+	i = 0;
+	s = s1;
+	while (*s)
+	{
+		if (isset(set, *s))
+			i++;
+		s++;
+	}
+	ret = malloc((s - s1 - i) + 1);
 	if (ret == NULL)
 		return (NULL);
-	if (s[start] == '\0')
+	s = ret;
+	while (*s1)
 	{
-		ret[0] = '\0';
-		return (ret);
+		if (!isset(set, *s1))
+			*ret++ = *s1;
+		s1++;
 	}
-	i = 0;
-	while (i < len && s[start + i])
-	{
-		ret[i] = s[start + i];
-		i++;
-	}
-	ret[i] = '\0';
-	return (ret);
+	*ret = '\0';
+	return ((char *)s);
 }

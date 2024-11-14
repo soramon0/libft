@@ -26,12 +26,22 @@ void testStrlcpy();
 void testStrlcat();
 void testSubstr();
 void testStrjoin();
+void testStrtrim();
 
 int main()
 {
-	testStrjoin();
+	testStrtrim();
 	return (0);
 }
+
+void testStrtrim()
+{
+	char *s1= "Hello    World";
+	char *set = " ";
+	char *ret = ft_strtrim(s1, set);
+	printf("got '%s'\n", ret);
+}
+
 
 void testStrjoin()
 {
