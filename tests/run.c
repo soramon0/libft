@@ -1,5 +1,6 @@
 #include "../libft.h"
 #include "stdio.h"
+#include <limits.h>
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
@@ -28,11 +29,18 @@ void testSubstr();
 void testStrjoin();
 void testStrtrim();
 void testSplit();
+void testItoa();
 
 int main()
 {
-	testSplit();
+	testItoa();
 	return (0);
+}
+
+void testItoa()
+{
+	char *r = ft_itoa((INT_MAX  * -1) - 1);
+	printf("%s\n", r);
 }
 
 void testSplit()
