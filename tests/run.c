@@ -24,11 +24,19 @@ void testStrdup();
 void testCalloc();
 void testStrlcpy();
 void testStrlcat();
+void testSubstr();
 
 int main()
 {
-	testStrlcat();
+	testSubstr();
 	return (0);
+}
+
+void testSubstr()
+{
+	char *str = "Hello World";
+	char *ret = ft_substr(str, 6, 5);
+	printf("got %s\n", ret);
 }
 
 void testStrlcat()
@@ -48,7 +56,7 @@ void testStrlcat()
 	char dst2[12] = {'H', 'e', 'l', 'l', 'o'};
 	size_t dst2len = ft_strlen(dst2);
 	const char *src2 = " World";
-	size_t r2 = strlcat(dst2, src2, sizeof(dst2) / 2);
+	size_t r2 = ft_strlcat(dst2, src2, sizeof(dst2) / 2);
 	printf("src: %s\n", src2);
 	printf("dst: %s\n", dst2);
 	printf("src length: %zu\n", ft_strlen(src2));
