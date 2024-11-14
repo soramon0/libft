@@ -31,14 +31,29 @@ void testStrtrim();
 void testSplit();
 void testItoa();
 void testStrmapi();
+void testStriteri();
 
 int main()
 {
-	testStrmapi();
+	testStriteri();
 	return (0);
 }
 
-char strmapi_fn(unsigned int i, char c)
+void striteri_toupper(unsigned int i, char *c)
+{
+	(void)i;
+	*c = ft_toupper(*c);
+}
+
+void testStriteri()
+{
+	char str[] = "Hello World";
+	ft_striteri(str, &striteri_toupper);
+	printf("%s\n", str);
+
+}
+
+char strmapi_toupper(unsigned int i, char c)
 {
 	(void)i;
 	return ft_toupper(c);
@@ -47,7 +62,7 @@ char strmapi_fn(unsigned int i, char c)
 void testStrmapi()
 {
 	char *str = "Hello World";
-	char *r = ft_strmapi(str, &strmapi_fn);
+	char *r = ft_strmapi(str, &strmapi_toupper);
 	printf("%s\n", r);
 }
 
