@@ -32,11 +32,18 @@ void testSplit();
 void testItoa();
 void testStrmapi();
 void testStriteri();
+void testPutcharFd();
 
 int main()
 {
-	testStriteri();
+	testPutcharFd();
 	return (0);
+}
+
+void testPutcharFd()
+{
+	ft_putchar_fd(69, 1);
+	ft_putchar_fd('\n', 1);
 }
 
 void striteri_toupper(unsigned int i, char *c)
