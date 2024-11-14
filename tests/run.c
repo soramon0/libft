@@ -34,11 +34,17 @@ void testStrmapi();
 void testStriteri();
 void testPutcharFd();
 void testPutstrFd();
+void testPutendlFd();
 
 int main()
 {
-	testPutstrFd();
+	testPutendlFd();
 	return (0);
+}
+
+void testPutendlFd()
+{
+	ft_putendl_fd("Hello World", 1);
 }
 
 void testPutstrFd()
