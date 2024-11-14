@@ -30,11 +30,25 @@ void testStrjoin();
 void testStrtrim();
 void testSplit();
 void testItoa();
+void testStrmapi();
 
 int main()
 {
-	testItoa();
+	testStrmapi();
 	return (0);
+}
+
+char strmapi_fn(unsigned int i, char c)
+{
+	(void)i;
+	return ft_toupper(c);
+}
+
+void testStrmapi()
+{
+	char *str = "Hello World";
+	char *r = ft_strmapi(str, &strmapi_fn);
+	printf("%s\n", r);
 }
 
 void testItoa()
