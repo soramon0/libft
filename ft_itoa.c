@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_zerocase(void)
+static char	*ft_zerocase(void)
 {
 	char	*ret;
 
@@ -24,7 +24,7 @@ char	*ft_zerocase(void)
 	return (ret);
 }
 
-size_t	ft_get_nbr_size(long num)
+static size_t	ft_get_nbr_size(long num)
 {
 	size_t	i;
 
