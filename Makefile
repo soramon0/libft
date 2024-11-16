@@ -10,8 +10,7 @@ all: $(LIB_NAME)
 
 $(LIB_NAME):
 	$(CC) $(CFLAGS) -c $(SRC)
-	ar rc $(LIB_NAME) $(OBJ)
-	ranlib $(LIB_NAME)
+	ar rcs $(LIB_NAME) $(OBJ)
 
 start:
 	@$(CC) $(CFLAGS) $(SRC_WITH_BONUS) ./tests/run.c -o run
@@ -26,8 +25,7 @@ testrun:
 
 bonus:
 	$(CC) $(CFLAGS) -c $(SRC_WITH_BONUS)
-	ar rc $(LIB_NAME) $(OBJ_WITH_BONUS)
-	ranlib $(LIB_NAME)
+	ar rcs $(LIB_NAME) $(OBJ_WITH_BONUS)
 
 clean:
 	rm -f $(OBJ_WITH_BONUS)
