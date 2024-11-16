@@ -1,6 +1,8 @@
 LIB_NAME = libft.a
-SRC = $(shell find . -type f -name '*.c' -not -path './tests/*')
+SRC = $(shell find . -type f -name '*.c' -not -path './tests/*' -not -path './*bonus.c')
+SRC_WITH_BONUS = $(shell find . -type f -name '*.c' -not -path './tests/*')
 OBJ = $(SRC:.c=.o)
+OBJ_WITH_BONUS = $(SRC_WITH_BONUS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
@@ -12,7 +14,7 @@ $(LIB_NAME):
 	ranlib $(LIB_NAME)
 
 start:
-	@$(CC) $(CFLAGS) $(SRC) ./tests/run.c -o run
+	@$(CC) $(CFLAGS) $(SRC_WITH_BONUS) ./tests/run.c -o run
 	@./run
 	@rm -f run 
 
@@ -22,12 +24,17 @@ testrun:
 	@./testrunner
 	@rm -f testrunner
 
+bonus:
+	$(CC) $(CFLAGS) -c $(SRC_WITH_BONUS)
+	ar rc $(LIB_NAME) $(OBJ_WITH_BONUS)
+	ranlib $(LIB_NAME)
+
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ_WITH_BONUS)
 
 fclean: clean
 	rm -f $(LIB_NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

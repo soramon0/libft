@@ -36,11 +36,98 @@ void testPutcharFd();
 void testPutstrFd();
 void testPutendlFd();
 void testPutnbrFd();
+void testLstPushFront();
 
 int main()
 {
-	testPutnbrFd();
+	testLstPushFront();
 	return (0);
+}
+
+void delNode(void *content)
+{
+	(void)content;
+}
+
+void delNodeStr(void *content)
+{
+	free(content);
+}
+
+char lst_strmapi_toupper(unsigned int i, char c)
+{
+	(void)i;
+	return ft_toupper(c);
+}
+
+void *lstmapFn(void *content)
+{
+	return ft_strmapi((char *)content, &lst_strmapi_toupper);
+}
+
+void testLstPushFront()
+{
+	t_list *lst = ft_lstnew("Karim");
+	t_list *head = ft_lstnew("Ibtissam");
+	t_list *tmp = head;
+	ft_lstadd_front(&lst, ft_lstnew("Ikram"));
+	ft_lstadd_front(&lst, head);
+	printf("Size = %d\n", ft_lstsize(head));
+	printf("Last = %s\n", (char *)ft_lstlast(head)->content);
+	ft_lstadd_back(&head, ft_lstnew("Sora"));
+	printf("After add back\n");
+	printf("Size = %d\n", ft_lstsize(head));
+	printf("Last = %s\n", (char *)ft_lstlast(head)->content);
+	while (tmp != NULL)
+	{
+		printf("%s\n", (char *)tmp->content);
+		if (tmp->next && ft_strncmp((char *)tmp->next->content, "Sora", ft_strlen("Sora")) == 0)
+		{
+			printf("Node to delete %s\n", (char *)tmp->next->content);
+			ft_lstdelone(tmp->next, &delNode);
+			tmp->next = NULL;
+			break;
+		}
+		else
+		{
+			tmp = tmp->next;
+		}
+	}
+	printf("After delete alone\n");
+	tmp = head;
+	while (tmp != NULL)
+	{
+		printf("%s\n", (char *)tmp->content);
+		tmp = tmp->next;
+	}
+	printf("After clear\n");
+	ft_lstclear(&head->next, &delNode);
+	tmp = head;
+	while (tmp != NULL)
+	{
+		printf("%s\n", (char *)tmp->content);
+		tmp = tmp->next;
+	}
+
+	printf("map linked list\n");
+	ft_lstadd_back(&head, ft_lstnew("Sora"));
+	ft_lstadd_back(&head, ft_lstnew("Ikram"));
+	ft_lstadd_back(&head, ft_lstnew("Karim"));
+	tmp = head;
+	printf("Print Original\n");
+	while (tmp != NULL)
+	{
+		printf("%s\n", (char *)tmp->content);
+		tmp = tmp->next;
+	}
+	t_list *newlst = ft_lstmap(head, &lstmapFn, &delNodeStr);
+	printf("Print New\n");
+	tmp = newlst;
+	while (tmp != NULL)
+	{
+		printf("%s\n", (char *)tmp->content);
+		tmp = tmp->next;
+	}
 }
 
 void	testPutnbrFd()
