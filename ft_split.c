@@ -26,7 +26,7 @@ size_t	ft_count_word(char const *src, char c)
 	return (s - src);
 }
 
-size_t	ft_count_words(const char *s, char c)
+size_t	ft_count_words(const char *s, char c, size_t len)
 {
 	size_t	ret;
 	size_t	i;
@@ -38,6 +38,8 @@ size_t	ft_count_words(const char *s, char c)
 		i += ft_count_word(&s[i], c);
 		if (i > 0)
 			ret++;
+		if (i == len)
+			return (ret);
 		if (s[i] == c)
 		{
 			while (s[i + 1] && s[i + 1] == c)
@@ -62,19 +64,16 @@ char	**ft_cleanup(char **arr, size_t n)
 	return (NULL);
 }
 
-char	**ft_split(char const *src, char c)
+char	**split_str(char **ret, char const *src, char c, size_t len)
 {
-	char	**ret;
 	char	*s;
 	size_t	i;
 	size_t	offset;
 
-	ret = (char **)malloc(sizeof(char **) * (ft_count_words(src, c) + 1));
-	if (ret == NULL)
-		return (NULL);
 	s = (char *)src;
 	i = 0;
-	while (*s)
+	offset = 0;
+	while (*s && offset < len)
 	{
 		offset = ft_count_word(s, c);
 		if (offset == 0 && *s == c && s++)
@@ -89,4 +88,16 @@ char	**ft_split(char const *src, char c)
 	}
 	ret[i] = NULL;
 	return (ret);
+}
+
+char	**ft_split(char const *src, char c)
+{
+	char	**ret;
+	size_t	len;
+
+	len = ft_strlen(src);
+	ret = (char **)malloc(sizeof(char *) * (ft_count_words(src, c, len) + 1));
+	if (ret == NULL)
+		return (NULL);
+	return (split_str(ret, src, c, len));
 }
