@@ -18,7 +18,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	unsigned char	needle;
 
 	haystack = (unsigned char *)s;
-	needle = (unsigned char )c;
+	needle = (unsigned char)c;
 	while (n--)
 	{
 		if (*haystack == needle)

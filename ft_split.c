@@ -80,7 +80,8 @@ char	**ft_split(char const *src, char c)
 		if (offset == 0 && *s == c && s++)
 			continue ;
 		ret[i] = ft_substr(src, s - src, offset);
-		if (ret[i] == NULL) return (ft_cleanup(ret, i));
+		if (ret[i] == NULL)
+			return (ft_cleanup(ret, i));
 		s += offset;
 		if (*s == c)
 			s++;
