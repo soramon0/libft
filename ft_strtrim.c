@@ -12,13 +12,20 @@
 
 #include "libft.h"
 
-int	isset(const char *set, char c)
+int	isset(const char *set, const char *src, size_t len)
 {
-	while (*set)
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < len && src[i] && set[i])
 	{
-		if (c == *set)
-			return (1);
-		set++;
+		j = 0;
+		while (i + j < len && src[i + j] == set[i + j])
+			j++;
+		if (set[j] == '\0')
+				return (1);
+		i++;
 	}
 	return (0);
 }
