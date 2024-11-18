@@ -12,49 +12,23 @@
 
 #include "libft.h"
 
-static size_t	ft_get_nbr_size(long num)
-{
-	size_t	i;
-
-	i = 0;
-	if (num < 0)
-	{
-		num *= -1;
-		i++;
-	}
-	while (num)
-	{
-		num /= 10;
-		i++;
-	}
-	return (i);
-}
-
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	c[11];
 	long	num;
-	size_t	i;
-	size_t	size;
 
 	num = n;
-	if (num == 0)
-	{
-		ft_putstr_fd("0", fd);
-		return ;
-	}
-	size = ft_get_nbr_size(num);
-	i = size;
 	if (num < 0)
 	{
-		c[0] = '-';
+		ft_putchar_fd('-', fd);
 		num *= -1;
 	}
-	c[i] = '\0';
-	while (num)
+	if (num > 9)
 	{
-		c[--i] = (num % 10) + '0';
-		num /= 10;
+		ft_putnbr_fd(num / 10, fd);
+		ft_putchar_fd(num % 10 + '0', fd);
 	}
-	write(fd, c, size);
+	else
+	{
+		ft_putchar_fd(num + '0', fd);
+	}
 }

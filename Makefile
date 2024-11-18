@@ -23,6 +23,11 @@ all : $(NAME)
 	$(CC) -c $(FLAGS) $< -o $@
 	ar rcs $(NAME) $@
 
+start:
+	@$(CC) $(CFLAGS) $(SRCS) $(BSRCS) ./tests/run.c -o run
+	@./run
+	@rm -f run
+
 clean:
 	rm -rf  $(OFILES) $(BOFILES)
 
@@ -33,4 +38,4 @@ re:	fclean all
 
 bonus: $(BOFILES)
 
-.PHONY:	all bonus clean
+.PHONY:	all bonus clean re fclean start

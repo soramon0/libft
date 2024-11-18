@@ -40,7 +40,7 @@ void testLstPushFront();
 
 int main()
 {
-	testLstPushFront();
+	testPutnbrFd();
 	return (0);
 }
 
