@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strsplit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaayoun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,44 +11,42 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-size_t	ft_count_word(char const *src, char c)
+size_t	ft_count_word(char const *src, char c, size_t len)
 {
-	char const	*s;
+	size_t	i;
 
-	s = src;
-	while (*s)
+	i = 0;
+	while (i < len)
 	{
-		if (*s == c)
-			return (s - src);
-		s++;
+		if (*src == c)
+			return (i);
+		i++;
+		src++;
 	}
-	return (s - src);
+	return (i);
 }
 
 size_t	ft_count_words(const char *s, char c, size_t len)
 {
 	size_t	ret;
 	size_t	i;
+	size_t	j;
 
 	ret = 0;
 	i = 0;
-	while (s[i])
+	j = 0;
+	while (i < len)
 	{
-		i += ft_count_word(&s[i], c);
-		if (i > 0)
-			ret++;
-		if (i == len)
-			return (ret);
-		if (s[i] == c)
+		j = ft_count_word(s, c, len - i);
+		i += j;
+		if (*s == c || j > 0)
 		{
-			while (s[i + 1] && s[i + 1] == c)
-			{
-				i++;
-				continue ;
-			}
+			ret++;
+			i++;
 		}
-		i++;
+		s += i;
 	}
 	return (ret);
 }
@@ -68,22 +66,18 @@ char	**split_str(char **ret, char const *src, char c, size_t len)
 {
 	char	*s;
 	size_t	i;
-	size_t	offset;
+	size_t	j;
 
 	s = (char *)src;
 	i = 0;
-	offset = 0;
-	while (*s && offset < len)
+	j = 0;
+	while (*s && j < len)
 	{
-		offset = ft_count_word(s, c);
-		if (offset == 0 && *s == c && s++)
-			continue ;
-		ret[i] = ft_substr(src, s - src, offset);
+		j += ft_count_word(s, c, len - j);
+		ret[i] = ft_substr(src, s - src, j);
 		if (ret[i] == NULL)
 			return (ft_cleanup(ret, i));
-		s += offset;
-		if (*s == c)
-			s++;
+		s += j + 1;
 		i++;
 	}
 	ret[i] = NULL;

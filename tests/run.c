@@ -40,7 +40,7 @@ void testLstPushFront();
 
 int main()
 {
-	testPutnbrFd();
+	testSplit();
 	return (0);
 }
 
@@ -187,8 +187,8 @@ void testItoa()
 
 void testSplit()
 {
-	char *str = " Hello   Wrold ";
-	char sep  = ' ';
+	char *str = "Hello Wrold";
+	char sep  = 'H';
 	char **r = ft_split(str, sep);
 	printf("%p\n", r);
 	while (r != NULL && *r != NULL)

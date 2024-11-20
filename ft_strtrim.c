@@ -38,9 +38,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	s = s1;
+	size_t len = ft_strlen(s1);
 	while (*s)
 	{
-		if (isset(set, *s))
+		if (isset(set, s, len))
 			i++;
 		s++;
 	}
@@ -50,7 +51,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	s = ret;
 	while (*s1)
 	{
-		if (!isset(set, *s1))
+		if (!isset(set, s1, len))
 			*ret++ = *s1;
 		s1++;
 	}
