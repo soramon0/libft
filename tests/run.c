@@ -188,7 +188,7 @@ void testItoa()
 void testSplit()
 {
 	char *str = "Hello Wrold";
-	char sep  = 'H';
+	char sep  = 'k';
 	char **r = ft_split(str, sep);
 	printf("%p\n", r);
 	while (r != NULL && *r != NULL)

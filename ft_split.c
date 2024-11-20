@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsplit.c                                       :+:      :+:    :+:   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaayoun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -41,11 +41,13 @@ size_t	ft_count_words(const char *s, char c, size_t len)
 	{
 		j = ft_count_word(s, c, len - i);
 		i += j;
-		if (*s == c || j > 0)
+		if (j > 0)
 		{
 			ret++;
 			i++;
 		}
+		else
+			i++;
 		s += i;
 	}
 	return (ret);
@@ -67,14 +69,19 @@ char	**split_str(char **ret, char const *src, char c, size_t len)
 	char	*s;
 	size_t	i;
 	size_t	j;
+	size_t	k;
 
 	s = (char *)src;
 	i = 0;
 	j = 0;
+	k = 0;
 	while (*s && j < len)
 	{
-		j += ft_count_word(s, c, len - j);
-		ret[i] = ft_substr(src, s - src, j);
+		k = ft_count_word(s, c, len - j);
+		j += k;
+		if (k == 0 && j++ && s++)
+			continue ;
+		ret[i] = ft_substr(src, s - src, k);
 		if (ret[i] == NULL)
 			return (ft_cleanup(ret, i));
 		s += j + 1;
