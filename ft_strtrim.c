@@ -12,49 +12,22 @@
 
 #include "libft.h"
 
-int	isset(const char *set, const char *src, size_t len)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (i < len && src[i] && set[i])
-	{
-		j = 0;
-		while (i + j < len && src[i + j] == set[i + j])
-			j++;
-		if (set[j] == '\0')
-				return (1);
-		i++;
-	}
-	return (0);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t		i;
-	const char	*s;
-	char		*ret;
+	char	*trimmed;
+	size_t	start;
+	size_t	end;
 
-	i = 0;
-	s = s1;
-	size_t len = ft_strlen(s1);
-	while (*s)
-	{
-		if (isset(set, s, len))
-			i++;
-		s++;
-	}
-	ret = malloc((s - s1 - i) + 1);
-	if (ret == NULL)
+	if (!s1)
 		return (NULL);
-	s = ret;
-	while (*s1)
-	{
-		if (!isset(set, s1, len))
-			*ret++ = *s1;
-		s1++;
-	}
-	*ret = '\0';
-	return ((char *)s);
+	if (!set)
+		return (ft_strdup(s1));
+	end = ft_strlen(s1) - 1;
+	start = 0;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		++start;
+	while (s1[end] && ft_strchr(set, s1[end]))
+		--end;
+	trimmed = ft_substr(s1, start, end - start + 1);
+	return (trimmed);
 }
